@@ -44,7 +44,7 @@ The cluster operates on a dedicated internal network (10.10.10.0/24) isolated fr
 ```mermaid
 graph TB
     subgraph External["External Network (170.168.1.0/24)"]
-       
+       User -->|SSH| SSH
     end
     
     subgraph HeadNode["Head Node (srv-hpc-01)"]
