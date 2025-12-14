@@ -1,0 +1,91 @@
+# slurm.conf - SLURM Workload Manager Configuration
+#
+# This configuration file must be identical on all nodes in the cluster.
+# Any changes require distribution to all nodes and service restart.
+#
+
+# ============================================
+# Cluster Identity
+# ============================================
+ClusterName=hpc-cluster
+SlurmctldHost=srv-hpc-01
+
+# ============================================
+# Authentication
+# ============================================
+AuthType=auth/munge
+CryptoType=crypto/munge
+
+# ============================================
+# Network Ports
+# ============================================
+SlurmctldPort=6817
+SlurmdPort=6818
+
+# ============================================
+# Paths and Directories
+# ============================================
+SlurmdSpoolDir=/var/spool/slurm/d
+StateSaveLocation=/var/spool/slurm/ctld
+SlurmctldPidFile=/run/slurmctld.pid
+SlurmdPidFile=/run/slurmd.pid
+
+# ============================================
+# Logging Configuration
+# ============================================
+SlurmctldLogFile=/var/log/slurm/slurmctld.log
+SlurmdLogFile=/var/log/slurm/slurmd.log
+SlurmctldDebug=info
+SlurmdDebug=info
+
+# ============================================
+# Process Tracking
+# ============================================
+ProctrackType=proctrack/linuxproc
+ReturnToService=2
+
+# ============================================
+# Scheduling Configuration
+# ============================================
+SchedulerType=sched/backfill
+SelectType=select/cons_tres
+SelectTypeParameters=CR_Core
+
+# ============================================
+# Timeout Settings
+# ============================================
+SlurmctldTimeout=120
+SlurmdTimeout=300
+InactiveLimit=0
+MinJobAge=300
+KillWait=30
+Waittime=0
+
+# ============================================
+# MPI Configuration
+# ============================================
+MpiDefault=pmix
+
+# ============================================
+# Compute Node Definitions
+#
+# Note: Adjust CPUs and RealMemory values to match
+# actual hardware. RealMemory should be set below
+# actual available memory to prevent node rejection.
+#
+# Check values with:
+#   nproc           (for CPUs)
+#   free -m         (for memory)
+# ============================================
+NodeName=srv-hpc-02 CPUs=12 RealMemory=7600 State=UNKNOWN
+NodeName=srv-hpc-03 CPUs=12 RealMemory=7600 State=UNKNOWN
+NodeName=srv-hpc-04 CPUs=12 RealMemory=7600 State=UNKNOWN
+NodeName=srv-hpc-05 CPUs=12 RealMemory=7600 State=UNKNOWN
+
+# ============================================
+# Partition Definition
+#
+# The compute partition includes all compute nodes
+# and is set as the default for job submission.
+# ============================================
+PartitionName=compute Nodes=srv-hpc-[02-05] Default=YES MaxTime=INFINITE State=UP
