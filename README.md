@@ -95,28 +95,6 @@ graph TB
     style INT fill:#fff4e1,stroke:#c90,stroke-width:1px
 
 ```
-```
-                          External Network (170.168.1.0/24)
-                                      |
-                                      |
-                              +---------------+
-                              |  srv-hpc-01   |
-                              |  (Head Node)  |
-                              | 170.168.1.30  |
-                              |  10.10.10.1   |
-                              +---------------+
-                                      |
-            Internal Cluster Network (10.10.10.0/24)
-                                      |
-          +-------------+-------------+-------------+
-          |             |             |             |
-   +------------+ +------------+ +------------+ +------------+
-   | srv-hpc-02 | | srv-hpc-03 | | srv-hpc-04 | | srv-hpc-05 |
-   | 10.10.10.11| | 10.10.10.12| | 10.10.10.13| | 10.10.10.14|
-   +------------+ +------------+ +------------+ +------------+
-        Compute       Compute       Compute       Compute
-        Node 1        Node 2        Node 3        Node 4
-```
 
 ### Shared Storage
 
