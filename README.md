@@ -84,10 +84,10 @@ graph TB
 
     %% Link styles - links are numbered 0,1,2,3... in order of appearance
     %% Links 0,1: SSH and Updates
-    %% Links 2,3,4,5: NFS Share - RED
-    %% Links 6,7,8,9: MPI Jobs - BOLD BLACK
-    linkStyle 2,3,4,5 stroke:#ff0000,stroke-width:2px
-    linkStyle 6,7,8,9 stroke:#000000,stroke-width:3px
+    %% Links 3,4,5,6: NFS Share - RED
+    %% Links 7,8,9,10: MPI Jobs - BOLD BLACK
+    linkStyle 3,4,5,6 stroke:#ff0000,stroke-width:2px
+    linkStyle 7,8,9,10 stroke:#000000,stroke-width:3px
 
     %% Styles
     style EXT fill:#f0f0f0,stroke:#999,stroke-width:1px
