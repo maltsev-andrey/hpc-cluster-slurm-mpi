@@ -44,7 +44,7 @@ The cluster operates on a dedicated internal network (10.10.10.0/24) isolated fr
 ```mermaid
 graph TB
     %% External network
-    subgraph EXT["External Network 170.168.1.0/24"<br/>]
+    subgraph EXT["External Network 170.168.1.0/24"]
         direction TB
         User[User]
         Internet[Internet]
