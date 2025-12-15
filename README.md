@@ -44,14 +44,14 @@ The cluster operates on a dedicated internal network (10.10.10.0/24) isolated fr
 ```mermaid
 graph TB
     %% External network
-    subgraph EXT["External Network (170.168.1.0/24)"]
+    subgraph EXT["External Network 170.168.1.0/24"]
         direction TB
         User[User]
         Internet[Internet]
     end
 
     %% Head node
-    subgraph HEAD["Head Node (srv-hpc-01)"]
+    subgraph HEAD["Head Node srv-hpc-01"]
         direction TB
         SSH[SSH Gateway]
         Scheduler[Job Scheduler]
@@ -59,36 +59,30 @@ graph TB
     end
 
     %% Internal cluster network
-    subgraph INT["Internal Cluster Network (10.10.10.0/24)"]
+    subgraph INT["Internal Cluster Network 10.10.10.0/24"]
         direction LR
-        CN1[srv-hpc-02<br/>6 cores]
-        CN2[srv-hpc-03<br/>6 cores]
-        CN3[srv-hpc-04<br/>6 cores]
-        CN4[srv-hpc-05<br/>6 cores]
+        CN1["srv-hpc-02<br/>12 cores"]
+        CN2["srv-hpc-03<br/>12 cores"]
+        CN3["srv-hpc-04<br/>12 cores"]
+        CN4["srv-hpc-05<br/>12 cores"]
     end
 
     %% Connections
     User -->|SSH| SSH
-    Internet -->|Updates / Packages| HEAD
-    SSH -->|Jump host SSH| HEAD
-
-    NFS -->|Shared storage (NFS)| CN1
-    NFS --> CN2
-    NFS --> CN3
-    NFS --> CN4
-
-    Scheduler -->|MPI job launch| CN1
-    Scheduler --> CN2
-    Scheduler --> CN3
-    Scheduler --> CN4
-
-    %% Optional visual link between head and internal network
-    HEAD --- INT
+    Internet -->|Updates| HEAD
+    NFS -->|NFS Share| CN1
+    NFS -->|NFS Share| CN2
+    NFS -->|NFS Share| CN3
+    NFS -->|NFS Share| CN4
+    Scheduler -->|MPI Jobs| CN1
+    Scheduler -->|MPI Jobs| CN2
+    Scheduler -->|MPI Jobs| CN3
+    Scheduler -->|MPI Jobs| CN4
 
     %% Styles
-    style EXT  fill:#f0f0f0,stroke:#999,stroke-width:1px
+    style EXT fill:#f0f0f0,stroke:#999,stroke-width:1px
     style HEAD fill:#e1f5ff,stroke:#339,stroke-width:1px
-    style INT  fill:#fff4e1,stroke:#c90,stroke-width:1px
+    style INT fill:#fff4e1,stroke:#c90,stroke-width:1px
 ```
                           External Network (170.168.1.0/24)
                                       |
