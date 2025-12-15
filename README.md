@@ -41,7 +41,8 @@ The cluster consists of five physical servers running Red Hat Enterprise Linux 9
 ### Network Architecture
 
 The cluster operates on a dedicated internal network (10.10.10.0/24) isolated from the external network. Only the head node (srv-hpc-01) has connectivity to both networks, enabling it to serve as a gateway for package downloads and external communications.
-```graph TB
+```mermaid
+graph TB
     %% Top-level layout
     %% External -> Head -> Internal
 
