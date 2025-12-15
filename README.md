@@ -43,9 +43,6 @@ The cluster consists of five physical servers running Red Hat Enterprise Linux 9
 The cluster operates on a dedicated internal network (10.10.10.0/24) isolated from the external network. Only the head node (srv-hpc-01) has connectivity to both networks, enabling it to serve as a gateway for package downloads and external communications.
 ```mermaid
 graph TB
-    %% Top-level layout
-    %% External -> Head -> Internal
-
     %% External network
     subgraph EXT["External Network (170.168.1.0/24)"]
         direction TB
@@ -74,26 +71,24 @@ graph TB
     User -->|SSH| SSH
     Internet -->|Updates / Packages| HEAD
     SSH -->|Jump host SSH| HEAD
+
     NFS -->|Shared storage (NFS)| CN1
     NFS --> CN2
     NFS --> CN3
     NFS --> CN4
+
     Scheduler -->|MPI job launch| CN1
     Scheduler --> CN2
     Scheduler --> CN3
     Scheduler --> CN4
 
-    %% Grouping edges from head to internal (optional visual helper)
+    %% Optional visual link between head and internal network
     HEAD --- INT
 
     %% Styles
     style EXT  fill:#f0f0f0,stroke:#999,stroke-width:1px
     style HEAD fill:#e1f5ff,stroke:#339,stroke-width:1px
     style INT  fill:#fff4e1,stroke:#c90,stroke-width:1px
-
-```
-
-
 ```
                           External Network (170.168.1.0/24)
                                       |
