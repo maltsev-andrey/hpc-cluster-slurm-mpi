@@ -61,10 +61,10 @@ graph TB
     %% Internal cluster network
     subgraph INT["Internal Cluster Network 10.10.10.0/24"]
         direction LR
-        CN1["srv-hpc-02<br/>12 cores"]
-        CN2["srv-hpc-03<br/>12 cores"]
-        CN3["srv-hpc-04<br/>12 cores"]
-        CN4["srv-hpc-05<br/>12 cores"]
+        CN1["srv-hpc-02<br/>12 cores<br/>Node 1"]
+        CN2["srv-hpc-03<br/>12 cores<br/>Node 2"]
+        CN3["srv-hpc-04<br/>12 cores<br/>Node 3"]
+        CN4["srv-hpc-05<br/>12 cores<br/>Node 4"]
     end
 
     %% Connections - order matters for linkStyle
