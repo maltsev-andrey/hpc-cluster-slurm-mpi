@@ -50,6 +50,9 @@ graph TB
         Internet[Internet]
     end
 
+    Note1["170.168.1.0/24"]
+    Note1 -.-> EXT
+
     %% Head node
     subgraph HEAD["Head Node srv-hpc-01"]
         direction TB
